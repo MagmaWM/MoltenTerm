@@ -1,0 +1,19 @@
+name: Build sighterm
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build project
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install dependencies
+        run: sudo apt update && sudo apt install wayland-protocols libwayland-dev libglvnd-dev libx11-dev libxrandr-dev libxinerama-dev libxi-dev libxcursor-dev make cmake extra-cmake-modules libxkbcommon-dev
+      - name: Build project (X11)
+        run: make
+      - name: Build project (Wayland)
+        run: make USE_WAYLAND=1
