@@ -7,8 +7,9 @@ on:
 
 jobs:
   build:
+    name: BUild project
+    runs-on: ubuntu-latest
     steps:
-      runs-on: ubuntu-latest
       - uses: actions/checkout@v3
       - name: Install dependencies
         run: sudo apt update && sudo apt install wayland-protocols libwayland-dev libglvnd-dev libx11-dev make cmake
